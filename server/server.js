@@ -15,11 +15,13 @@ res.send('hellow word');// el send es acepta etiquetado HTML
 }); 
 
 app.use(require('./routes/usuario'));
+app.use(require('./routes/categoria'));
+app.use(require('./routes/productos'));
 
 mongoose.connect('mongodb://localhost:27017/cafeteria',{
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false,
+  useFindAndModify: false, 
   useCreateIndex: true}, 
 
   (err, res) =>{
