@@ -2,7 +2,7 @@ const express = require('express');
 const _ = require('underscore');
 const app = express();
 const Productos = require('../modules/productos');
-//++++++++++++++++++++++++++++++++++++++++++ GET ++++++++++++++++++++++++++++++++++
+
 app.get('/producto', (req, res)=>{
   let desde = req.query.desde || 0;
   let hasta = req.query.hasta || 5;
@@ -28,7 +28,7 @@ app.get('/producto', (req, res)=>{
       })
   });
 });
-//+++++++++++++++++++++++++++++++++++++++ FIN DEL GET +++++++++++++++++++++++++++++++++++
+
 app.post('/producto', (req, res)=>{
     
 let body = req.body
@@ -54,8 +54,8 @@ let body = req.body
     });
   });
 });
-//+++++++++++++++++++++++++++++++ FIN DEL POST +++++++++++++++++++++++++++++++++++++++++
-//++++++++++++++++++++++++++++++++++ PUT +++++++++++++++++++++++++++++++++++++++++++++++
+
+
 app.put('/producto/:id', (req, res)=>{
     let id = req.params.id;
     let body = _.pick(req.body, ['usuario', 'nombre', 'categoria', 'preciouni']);
@@ -75,8 +75,8 @@ app.put('/producto/:id', (req, res)=>{
     });  
   });
 });
-//+++++++++++++++++++++++++++++++ FIN DEL PUT +++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++ DELETE ++++++++++++++++++++++++++++++++++++++++++++++
+
+
 app.delete('/producto/:id', (req, res)=>{
     let id = req.params.id;
     Productos.deleteOne({_id: id}, (err, proBorrado)=>{
@@ -95,5 +95,5 @@ app.delete('/producto/:id', (req, res)=>{
     });
   });
 });
-//++++++++++++++++++++++++++++++++++++++++ FIN DEL DELETE +++++++++++++++++++++++++++++++++++
+
 module.exports = app;
